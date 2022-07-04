@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
 
-// const breakpoints = [600, 900, 1200, 1536];
-
-// const mq = breakpoints.map(
-//     bp => `@media (min-width: ${bp}px)`
-// )
 const breakpoints = {
     xs: 400, sm: 600, md: 900, lg: 1200, xl: 1536
 }

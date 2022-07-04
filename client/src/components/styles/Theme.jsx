@@ -37,7 +37,6 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     backgroundImage: 'none',
-                    border: '2px solid #c9dbff',
                     borderRadius: '0',
                 }
             }

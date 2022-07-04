@@ -37,7 +37,7 @@ const Landing = () => {
             axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
             .then(res => {
                 const temp = res.data.drinks;
-                temp.forEach((e => e.expanded = false));
+                addExpanded(temp);
                 setDrinks(temp);
             })
             .catch(err => console.log(err))
@@ -47,12 +47,13 @@ const Landing = () => {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`)
             .then(res => {
                 const temp = res.data.drinks;
-                temp.forEach((e => e.expanded = false));
+                addExpanded(temp);
                 setDrinks(temp);
             })
             .catch(err => console.log(err))
         }
         if (search) {
+            setSort('');
             getSearchDrinks();
         } else {
             getDrinks();
@@ -61,10 +62,11 @@ const Landing = () => {
 
     // Finds a random drink.
     useEffect(() => {
+        setSort('');
         axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
         .then(res => {
             const temp = res.data.drinks;
-            temp.forEach((e => e.expanded = false));
+            addExpanded(temp);
             setRanDrink(temp);
         })
         .catch(err => console.log(err))
@@ -87,38 +89,34 @@ const Landing = () => {
         // Functions for receiving the filter drinks.
         const getCats = (callback) => {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${catFilter}`)
-            .then(res => {
-                const temp = res.data.drinks;
-                callback(temp);
-            })
+            .then(res => callback(res.data.drinks))
             .catch(err => console.log(err))
         }
         const getIng = (callback) => {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingFilter}`)
-            .then(res => {
-                const temp = res.data.drinks;
-                callback(temp);
-            })
+            .then(res => callback(res.data.drinks))
             .catch(err => console.log(err))
         }
         const getGlass = (callback) => {
             axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glassFilter}`)
-            .then(res => {
-                const temp = res.data.drinks;
-                callback(temp);
-            })
+            .then(res => callback(res.data.drinks))
             .catch(err => console.log(err))
         }
+
         // Callback function for making n amount of axios calls
         // based on the amount of id's recieved from the calls above.
+        // This is needed to return all the data about the drinks for the user to see.
+
+        // NEEDS TO BE OPTIMEZED!!
         const getDrinks = (t) => {
+            setSort('');
             const requests = [];
             t.forEach((i => requests.push(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${i.idDrink}`)))
             axios.all(requests.map((request) => axios.get(request))).then(
                 (data) => {
                     const newData = [];
                     data.map((d) => newData.push(d.data.drinks[0]));
-                    newData.forEach((e => e.expanded = false));
+                    addExpanded(newData);
                     setDrinks(newData);
                 }
             );
@@ -133,6 +131,12 @@ const Landing = () => {
         };
 
     }, [catFilter, ingFilter, glassFilter])
+
+    // Helper function to add expanded to the objects in the list of drinks.
+    const addExpanded = (temp) => {
+        const drinkList = temp.forEach((e => e.expanded = false));
+        return drinkList;
+    }
 
     // Changes the expand property on the card component.
     const handleExpandClick = (id) => {
@@ -151,6 +155,7 @@ const Landing = () => {
         });
         setDrinks(newDrinks);
     };
+    // Sorts the cards in a-z order.
     const handleSort = (e) =>  {
         setSort(e.target.value);
         if (e.target.value === 1) {
@@ -160,6 +165,7 @@ const Landing = () => {
         }
         return;
     };
+    // Sets the search state for the api to then call depending on what the user input.
     const handleSearch = (e) => {
         e.preventDefault();
         let formData = e.target[0].value;
@@ -168,6 +174,7 @@ const Landing = () => {
         }
         setSearchParams({search: formData});
     };
+    // Simple function for changing the state of the filter sidebar.
     function changeSide() {
         setSide(!side);
     };

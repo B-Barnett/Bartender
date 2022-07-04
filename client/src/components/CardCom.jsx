@@ -31,7 +31,7 @@ const CardCom = props => {
             <StyledCard>
                 <Grid container spacing={2} justifyContent={{xxs: 'center', xs:'center', sm:'start',md:'start',lg:'start'}}>
                 {
-                    drinks.map((drink) => <Grid item xs={12} sm={4} lg={3} mt={2} key={drink.idDrink}>
+                    drinks.map((drink) => <Grid item xxs={12} xs={12} sm={4} lg={3} mt={2} key={drink.idDrink}>
                         <Card>
                             <CardHeader sx={{textAlign: 'center', padding: '12px 0 12px 0'}} title={drink.strDrink}/>
                             <CardMedia
@@ -61,21 +61,21 @@ const CardCom = props => {
                                 <CardContent>
                                     <p className="cardContentExp">Ingredients:</p>
                                     <ul className="cardContentExp">
-                                        <li>{drink.strIngredient1}</li>
-                                        <li>{drink.strIngredient2}</li>
-                                        <li>{drink.strIngredient3}</li>
-                                        <li>{drink.strIngredient4}</li>
-                                        <li>{drink.strIngredient5}</li>
-                                        <li>{drink.strIngredient6}</li>
-                                        <li>{drink.strIngredient7}</li>
-                                        <li>{drink.strIngredient8}</li>
-                                        <li>{drink.strIngredient9}</li>
-                                        <li>{drink.strIngredient10}</li>
-                                        <li>{drink.strIngredient11}</li>
-                                        <li>{drink.strIngredient12}</li>
-                                        <li>{drink.strIngredient13}</li>
-                                        <li>{drink.strIngredient14}</li>
-                                        <li>{drink.strIngredient15}</li>
+                                        <li>{drink.strMeasure1} {drink.strIngredient1}</li>
+                                        <li>{drink.strMeasure2} {drink.strIngredient2}</li>
+                                        <li>{drink.strMeasure3} {drink.strIngredient3}</li>
+                                        <li>{drink.strMeasure4} {drink.strIngredient4}</li>
+                                        <li>{drink.strMeasure5} {drink.strIngredient5}</li>
+                                        <li>{drink.strMeasure6} {drink.strIngredient6}</li>
+                                        <li>{drink.strMeasure7} {drink.strIngredient7}</li>
+                                        <li>{drink.strMeasure8} {drink.strIngredient8}</li>
+                                        <li>{drink.strMeasure9} {drink.strIngredient9}</li>
+                                        <li>{drink.strMeasure10} {drink.strIngredient10}</li>
+                                        <li>{drink.strMeasure11} {drink.strIngredient11}</li>
+                                        <li>{drink.strMeasure12} {drink.strIngredient12}</li>
+                                        <li>{drink.strMeasure13} {drink.strIngredient13}</li>
+                                        <li>{drink.strMeasure14} {drink.strIngredient14}</li>
+                                        <li>{drink.strMeasure15} {drink.strIngredient15}</li>
                                     </ul>
                                     <p className="cardContentExp">Instructions:</p>
                                     <p className="cardContentExp">{drink.strInstructions}</p>

@@ -7,9 +7,7 @@ export const StyledHomeHeader = styled.div`
         display: inline-block;
         font-weight: 100;
         letter-spacing: .1em;
-        border: 2px solid #c9dbff;
-        padding: 10px 50px 10px 50px;
+        padding: 0px 50px 10px 50px;
         margin: 0;
-        // margin: 25px 0 30px 0;
     }
 `

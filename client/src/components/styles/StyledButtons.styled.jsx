@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import {Link} from 'react-router-dom';
 
 export const RanButton = styled.button`
     font-size: 16px;
@@ -95,4 +96,43 @@ export const StyledFooterButton = styled.button`
         font-size: 1.25em;
         margin: 0 0 0 10px;
     }
+`
+
+export const LogRegButton = styled.button`
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    padding: 10px 30px 10px 30px;
+    position: relative;
+    outline: 0;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    margin: 0;
+    cursor: pointer;
+    background-color: #005aff;
+    user-select: none;
+    -webkit-user-select: none;
+`
+
+export const LogRegLink = styled(Link)`
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    padding: 10px 30px 10px 30px;
+    position: relative;
+    outline: 0;
+    border: none;
+    border-radius: 100px;
+    color: white;
+    margin: 0;
+    cursor: pointer;
+    background-color: #15204b;
+    user-select: none;
+    -webkit-user-select: none;
 `

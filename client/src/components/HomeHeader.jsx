@@ -11,7 +11,7 @@ const HomeHeader = (props) => {
     return (
         <StyledHomeHeader>
             <Grid container mt={5} mb={3} justifyContent='center'>
-                <Grid item sx={{display: 'flex', justifyContent: {xxs: 'center', xs:'center', sm: 'flex-start'}}} xxs={12} sm={6}>
+                <Grid item sx={{display: 'flex', alignItems: 'center', justifyContent: {xxs: 'center', xs:'center', sm: 'flex-start'}}} xxs={12} sm={6}>
                     <h2 className='homeHeader'>Drinks</h2>
                 </Grid>
                 <Grid item sx={{display: 'flex', justifyContent: {xxs: 'center', xs:'center', sm:'flex-end'}, marginTop: {xxs: '20px', xs: '20px', sm: '0'}}} xxs={12} sm={6}>
@@ -22,7 +22,7 @@ const HomeHeader = (props) => {
                             id='sort'
                             label='Sort By'
                             value={sort}
-                            sx={{width: '138px', height: '53px'}}
+                            sx={{width: '150px', height: '53px'}}
                             onChange={handleSort}
                             >
                             <MenuItem value={""}>None</MenuItem>
